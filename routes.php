@@ -1,6 +1,5 @@
 <?php
+//$router contient l'objet Router de index.php
+$router->get('/', 'homepage.controller');
 
-return [
-  '/' => "controllers/home.controller",
-  '/recipes' => '/controllers/recipes/index'
-];
+$router->get('/recipes', 'recipes/index');

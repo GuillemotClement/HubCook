@@ -10,12 +10,10 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
               <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <a href="/" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+              <a href="/" class="<?= isActive('/') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium>"
                  aria-current="page">Accueil</a>
               <a href="/recipes"
-                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Recettes</a>
-              <a href="/week"
-                 class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Ma semaine</a>
+                 class="<?= isActive('/recipes') ? 'bg-gray-900 text-white' : 'text-gray-300' ?> hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium>">Recettes</a>
             </div>
           </div>
         </div>
