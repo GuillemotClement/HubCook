@@ -2,6 +2,8 @@
 const BASE_PATH = __DIR__ . '/../';
 
 require_once (BASE_PATH . "src/core/functions.php");
+require basePath('core/router');
 
-//dd(basePath('controllers/homepage.controller'));
-require basePath('controllers/homepage.controller');
+
+
+getController($_SERVER['REQUEST_URI']);

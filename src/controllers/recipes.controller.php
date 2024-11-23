@@ -2,4 +2,6 @@
 
 $heading = "Recettes";
 
-require 'views/recipes.view.php';
+require basePath('views/recipes.view', [
+  'heading' => $heading
+]);

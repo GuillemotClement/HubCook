@@ -1,5 +1,5 @@
 <?php
 
-$heading = "Homepage";
-
-require basePath('views/homepage.view');
+getView('homepage.view', [
+  'heading' => 'Homepage'
+]);
