@@ -1,0 +1,10 @@
+{
+    "name": "clement/hub-cook",
+    "authors": [
+        {
+            "name": "GuillemotClement",
+            "email": "guillemot.clement@protonmail.com"
+        }
+    ],
+    "require": {}
+}
