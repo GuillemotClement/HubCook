@@ -1,14 +1,7 @@
 <?php
+const BASE_PATH = __DIR__ . '/../';
 
-require(__DIR__ . "/../vendor/autoload.php");
+require_once (BASE_PATH . "src/core/functions.php");
 
-use \Core\Router;
-use \Core\Utils;
-
-$router = new Router();
-
-$router->getRoute($_SERVER['REQUEST_URI']);
-
-
-
-
+//dd(basePath('controllers/homepage.controller'));
+require basePath('controllers/homepage.controller');

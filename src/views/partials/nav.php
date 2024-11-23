@@ -34,6 +34,10 @@
 
             <!-- Profile dropdown -->
             <div class="relative ml-3">
+                <ul class="flex gap-x-2 text-white">
+                    <li><a href="/../controllers/login.controller.php">Connexion</a></li>
+                    <li><a href="">Inscription</a></li>
+                </ul>
               <div>
                 <button type="button"
                         class="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -71,6 +75,7 @@
           </div>
         </div>
         <div class="-mr-2 flex md:hidden">
+
           <!-- Mobile menu button -->
           <button type="button"
                   class="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
@@ -110,6 +115,10 @@
       </div>
       <div class="border-t border-gray-700 pb-3 pt-4">
         <div class="flex items-center px-5">
+            <ul>
+                <li><a href="">Connexion</a></li>
+                <li><a href="">Inscription</a></li>
+            </ul>
           <div class="shrink-0">
             <img class="size-10 rounded-full"
                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -131,6 +140,10 @@
           </button>
         </div>
         <div class="mt-3 space-y-1 px-2">
+            <ul>
+                <li><a href="">Connexion</a></li>
+                <li><a href="">Inscription</a></li>
+            </ul>
           <a href="#"
              class="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white">Your
             Profile</a>
