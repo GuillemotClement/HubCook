@@ -1,0 +1,58 @@
+name: Deploy to Github Pages
+
+on: 
+  # au push sur la branche main on déclenche l'action
+  push:
+    branches:
+      - main
+  # permet de déclencher manuellement l'action
+  workflow_dispatch:
+
+# définition des permission
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # set the default working directory
+    defaults:
+      run:
+        working-directory: /frontend
+    steps:
+      #checkout repo code
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      #setup Node env
+      - name: Setup Node env
+        uses: actions/setup-node@v4.1.0
+
+      #install dep with npm cli
+      - name: Build the project
+        run: npm run build
+
+      # upload built artefact to GitHubPage
+      - name: Upload GitHub Pages artifiact
+        uses: actions/upload-pages-artifact@v3.0.1
+        with:
+          path: frontend/dist
+
+  #job to deploy artifact to GitHub Pages
+  deploy:
+    #this job depend on the succes of the build job
+    needs: build 
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      # set after deplyment
+      url: ${{ steps.deployment.outputs.pages_url }}
+
+    steps:
+      # deploy the uploaded artifact to GitHub Pages
+      - name: Deploy GitHub Pages site
+        id: deployment
+        uses: actions/deploy-pages@v4.0.5
