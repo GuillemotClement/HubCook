@@ -7,6 +7,16 @@ services:
     #on indique le port à écouter
     ports:
       - 5173:5173
+
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app
+          ignore:
+            - ./node_modules
+        - action: rebuild
+          path: ./frontend/package.json
     # gère le partage de fichier entre l'hôte et le container
     # permet de synchroniser les fichier ou stocker des données
     # ici on bind les deux fichier pour avoir une synchro
