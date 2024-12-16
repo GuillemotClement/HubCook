@@ -20,7 +20,7 @@ jobs:
     # set the default working directory
     defaults:
       run:
-        working-directory: /frontend
+        working-directory: /app
     steps:
       #checkout repo code
       - name: Checkout
