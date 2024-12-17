@@ -5,7 +5,11 @@ const mongoose = require("mongoose");
 //la fonction retourne une promesse, on vient donc la traiter avec then
 //on utilise ensuite une callback pour traiter la réponse
 mongoose
-	.connect("//")
+	.connect(
+		//on indique ladresse de mongo atlas
+		//il faudras ajouter le mot de passe de l'user ainsi que la base de donnée (collection) que l'on souhaite utiliser
+		"mongodb+srv://guillemotclement:849Tcmh@uvfk@cluster0.7wtm5.mongodb.net/reactJwt?retryWrites=true&w=majority&appName=Cluster0",
+	)
 	.then(() => {
 		console.log("Connexion DB OK");
 	})
