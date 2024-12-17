@@ -14,7 +14,10 @@ export default function RegisterForm() {
 			.string()
 			.required("Saisir un pseudo")
 			.min(2, "L'username est trop court"),
-		email: yup.string().email("Email invalide"),
+		email: yup
+			.string()
+			.email("Email invalide")
+			.required("Un email est obligatoire"),
 		password: yup
 			.string()
 			.required("Saisir un mot de passe")
