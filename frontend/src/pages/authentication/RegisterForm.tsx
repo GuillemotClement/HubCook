@@ -1,8 +1,13 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { createUser } from "../../apis/users";
+import { useNavigate } from "react-router";
 
 export default function RegisterForm() {
+	//on viens récupérer la fonction pour rediriger l'user vers la page de connexion une fois l'inscription réussis
+	const navigate = useNavigate();
+
 	//mise en place de la validation
 	const validationSchema = yup.object({
 		username: yup
@@ -27,15 +32,28 @@ export default function RegisterForm() {
 	const {
 		handleSubmit,
 		register,
-		formState: { errors },
+		formState: { errors, isSubmitting },
+		setError,
+		clearErrors,
 	} = useForm({
 		defaultValues,
 		resolver: yupResolver(validationSchema),
 	});
 
-	//préparation de la fonction de submit()
-	const submit = handleSubmit((credentials) => {
+	//on utilise une fonction asynchrone
+	const submit = handleSubmit(async (credentials) => {
 		console.log(credentials);
+		try {
+			//on viens nettoyer les erreur en cas de succes
+			clearErrors();
+			//on invoque la méthode permettant de créer le nouvel utilsiateur
+			const user = await createUser(credentials);
+			//si l'inscription à réussis, on redirige l'user vers la page de connexion
+			navigate("/login");
+		} catch (message) {
+			//on viens préciser le type d'erreur que l'on récupère
+			setError("generic", { type: "generic", message });
+		}
 	});
 
 	return (
@@ -81,10 +99,16 @@ export default function RegisterForm() {
 						<p className="text-red-500 font-bold">{errors.password.message}</p>
 					)}
 				</div>
+				{/* Affichage d'une erreur provenant du backe end */}
+				{errors.generic && (
+					<p className="text-red-500 font-bold">{errors.generic.message}</p>
+				)}
 				<div className="flex justify-center">
 					<button
 						className="py-2 px-3 bg-blue-500 text-white hover:bg-blue-700 shadow-md rounded-md"
 						type="submit"
+						// on vient empêcher la double soumission
+						disabled={isSubmitting}
 					>
 						Inscription
 					</button>
