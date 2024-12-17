@@ -20,7 +20,7 @@ export default function Header() {
 					<NavLink to="/">Connexion</NavLink>
 				</li>
 				<li>
-					<NavLink to="/register">Inscription</NavLink>
+					<NavLink to="register">Inscription</NavLink>
 				</li>
 				<li>
 					<NavLink to="/">Profil</NavLink>
