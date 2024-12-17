@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import RootLayout from "./layout/RootLayout.tsx";
 import Homepage from "./pages/Homepage.tsx";
 import Recipes from "./pages/recipes/Recipes.tsx";
+import RegisterForm from "./pages/authentication/RegisterForm.tsx";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
 	<StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root") as HTMLElement).render(
 				<Route path="/" element={<RootLayout />}>
 					<Route index element={<Homepage />} />
 					<Route path="recipes" element={<Recipes />} />
+					<Route path="/register" element={<RegisterForm />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
