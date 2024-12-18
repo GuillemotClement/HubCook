@@ -18,11 +18,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "*",
-  //   element: <RootLayout />,
-  //   errorElement: <ErrorPage />,
-  // },
 ]);
 
 createRoot(document.getElementById("root") as HTMLElement).render(

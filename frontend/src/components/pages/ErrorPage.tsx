@@ -20,7 +20,7 @@ export default function ErrorPage() {
       </p>
       <NavLink
         to="/"
-        className="bg-blue-500 text-white px-3 py-2 rounded-md shadow-md hover:bg-blue-700 shadow-xl"
+        className="bg-blue-500 text-white px-3 py-2 rounded-md shadow-md hover:bg-blue-700 hover:shadow-xl"
       >
         Retour
       </NavLink>

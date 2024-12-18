@@ -7,9 +7,9 @@ export default function RootLayout() {
     <div className="flex flex-col min-h-screen">
       <Header />
       <main className="flex-1">
-        {/* <div className="container mx-auto border-red-500"> */}
-        <Outlet />
-        {/* </div> */}
+        <div className="container mx-auto border-red-500 my-8">
+          <Outlet />
+        </div>
       </main>
       <Footer />
     </div>
