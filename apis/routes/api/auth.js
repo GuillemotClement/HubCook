@@ -3,7 +3,7 @@ const UserModel = require("../../database/models/user.model");
 const router = require("express").Router();
 const bcrypte = require("bcrypt");
 const jsonwebtoken = require("jsonwebtoken");
-const { key } = require("../../keys");
+const { key, keyPub } = require("../../keys");
 
 router.post("/", async (req, res) => {
 	//on récupère email et mot de passe de la requête
@@ -42,6 +42,34 @@ router.post("/", async (req, res) => {
 	} catch (e) {
 		//si la requête echoue, on retourne le message d'erreur
 		res.status(400).json("Echec de l'identification");
+	}
+});
+
+router.get("/current", async (res, req) => {
+	//on extraire la clé token depuis le cookie
+	const { token } = req.cookies;
+	//si on as un token
+	if (token) {
+		try {
+			// on extrait l'utilisateur du token
+			//on vient décoder le token
+			const decodedToken = jsonwebtoken.verify(token, keyPub);
+			// on peut récupérer l'user
+			//on récupère l'user via son ID avec la clé sub
+			//exec() permet de transformer l'instruction en promesse
+			const currentUser = await UserModel.findById(decodedToken.sub).exec();
+			if (currentUser) {
+				//si on as un user alors on le retourne
+				return res.json(currentUser);
+				// biome-ignore lint/style/noUselessElse: <explanation>
+			} else {
+				return res.json(null);
+			}
+		} catch (e) {
+			return res.json(null);
+		}
+	} else {
+		return res.json(null);
 	}
 });
 

@@ -1,5 +1,7 @@
+const API_AUTH = "/api/auth";
+
 export async function signin(credentials) {
-	const response = await fetch("/api/auth", {
+	const response = await fetch(API_AUTH, {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
@@ -18,4 +20,10 @@ export async function signin(credentials) {
 			throw new Error("Erreur lors de l'identification");
 		}
 	}
+}
+
+//la fonction permet de récupérer l'utilisateur connecté
+export async function getCurrentUser() {
+	const response = await fetch(`${API_AUTH}/current`);
+	return response.json();
 }
