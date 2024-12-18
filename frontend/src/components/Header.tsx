@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router";
 import { AuthContext } from "../context";
+import { signout } from "../apis/auth";
 
 export default function Header() {
 	//on récupère user depuis le context
@@ -36,9 +37,7 @@ export default function Header() {
 						<li>
 							<NavLink to="profil">Profil</NavLink>
 						</li>
-						<li>
-							<NavLink to="/">Deconnexion</NavLink>
-						</li>
+						<li onClick={() => signout()}>Deconnexion</li>
 					</>
 				)}
 			</ul>

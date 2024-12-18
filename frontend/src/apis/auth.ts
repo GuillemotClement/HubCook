@@ -27,3 +27,10 @@ export async function getCurrentUser() {
 	const response = await fetch(`${API_AUTH}/current`);
 	return response.json();
 }
+
+//fonction permet la deconnexion
+export async function signout() {
+	const response = await fetch(API_AUTH, {
+		method: "DELETE",
+	});
+}

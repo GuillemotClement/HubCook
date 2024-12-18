@@ -75,4 +75,9 @@ router.get("/current", async (res, req) => {
 	}
 });
 
+router.delete("/", (req, res) => {
+	res.clearCookie("token");
+	res.end();
+});
+
 module.exports = router;
