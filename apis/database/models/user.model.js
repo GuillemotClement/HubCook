@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 //création du schema
-const userSchema = mongosse.Schema({
+const userSchema = mongoose.Schema({
 	//on viens décrir les différentes colonnes de la table
 	username: String,
 	// on définis l'adresse email comme unique
