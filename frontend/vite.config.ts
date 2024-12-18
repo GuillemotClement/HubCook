@@ -6,6 +6,13 @@ export default defineConfig({
 	plugins: [react()],
 	base: "/HubCook",
 	server: {
+		//toutes les url qui commence par le path sont redirigé vers le serveur
+		proxy: {
+			"/api": {
+				target: "http://localhost:3001",
+				changeOrigin: true,
+			},
+		},
 		host: true,
 		watch: {
 			usePolling: true,

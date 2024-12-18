@@ -52,10 +52,10 @@ export default function RegisterForm() {
 			//on invoque la méthode permettant de créer le nouvel utilsiateur
 			const user = await createUser(credentials);
 			//si l'inscription à réussis, on redirige l'user vers la page de connexion
-			navigate("/login");
+			navigate("/");
 		} catch (message) {
 			//on viens préciser le type d'erreur que l'on récupère
-			setError("generic", { type: "generic", message });
+			// setError("generic", { type: "generic", message });
 		}
 	});
 
@@ -103,9 +103,9 @@ export default function RegisterForm() {
 					)}
 				</div>
 				{/* Affichage d'une erreur provenant du backe end */}
-				{errors.generic && (
+				{/* {errors.generic && (
 					<p className="text-red-500 font-bold">{errors.generic.message}</p>
-				)}
+				)} */}
 				<div className="flex justify-center">
 					<button
 						className="py-2 px-3 bg-blue-500 text-white hover:bg-blue-700 shadow-md rounded-md"
