@@ -57,7 +57,9 @@ router.get("/current", async (res, req) => {
 			// on peut récupérer l'user
 			//on récupère l'user via son ID avec la clé sub
 			//exec() permet de transformer l'instruction en promesse
-			const currentUser = await UserModel.findById(decodedToken.sub).exec();
+			const currentUser = await UserModel.findById(decodedToken.sub)
+				.select("-password -__v")
+				.exec();
 			if (currentUser) {
 				//si on as un user alors on le retourne
 				return res.json(currentUser);

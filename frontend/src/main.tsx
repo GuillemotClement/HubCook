@@ -10,6 +10,20 @@ import LoginForm from "./pages/authentication/LoginForm.tsx";
 import { rootLoader } from "./loaders/rootLoader.ts";
 import ProfillIdex from "./pages/profil/ProfillIdex.tsx";
 
+// const router = createBrowserRouter([
+// 	{
+// 		path: "/",
+// 		element: <RootLayout />,
+// 		loader: rootLoader, // Ajout du loader ici
+// 		children: [
+// 			{ index: true, element: <Homepage /> },
+// 			{ path: "recipes", element: <Recipes /> },
+// 			{ path: "register", element: <RegisterForm /> },
+// 			{ path: "login", element: <LoginForm /> },
+// 		],
+// 	},
+// ]);
+
 createRoot(document.getElementById("root") as HTMLElement).render(
 	<StrictMode>
 		<BrowserRouter basename="/HubCook">
