@@ -1,19 +1,10 @@
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { createUser } from "../../apis/users";
-import { useNavigate } from "react-router";
+import { signin } from "../../apis/auth";
 
-export default function RegisterForm() {
-	//on viens récupérer la fonction pour rediriger l'user vers la page de connexion une fois l'inscription réussis
-	const navigate = useNavigate();
-
-	//mise en place de la validation
+export default function LoginForm() {
 	const validationSchema = yup.object({
-		username: yup
-			.string()
-			.required("Saisir un pseudo")
-			.min(2, "L'username est trop court"),
 		email: yup
 			.string()
 			.email("Email invalide")
@@ -24,14 +15,11 @@ export default function RegisterForm() {
 			.min(8, "Le mot de passe doit faire au moins 8 caractères"),
 	});
 
-	//définition des valeurs par défaut
 	const defaultValues = {
-		username: "",
 		email: "",
 		password: "",
 	};
 
-	//récupération des méthode du hook form
 	const {
 		handleSubmit,
 		register,
@@ -45,14 +33,10 @@ export default function RegisterForm() {
 
 	//on utilise une fonction asynchrone
 	const submit = handleSubmit(async (user) => {
-		console.log(user);
 		try {
-			//on viens nettoyer les erreur en cas de succes
 			clearErrors();
-			//on invoque la méthode permettant de créer le nouvel utilsiateur
-			await createUser(user);
-			//si l'inscription à réussis, on redirige l'user vers la page de connexion
-			navigate("/login");
+			const user = await signin(user);
+			console.log(user);
 		} catch (message) {
 			//on viens préciser le type d'erreur que l'on récupère
 			// setError("generic", { type: "generic", message });
@@ -63,21 +47,7 @@ export default function RegisterForm() {
 		<div className="">
 			{/* on vient connecter le formulaire au hook */}
 			<form action="" onSubmit={submit}>
-				<h2 className="text-center text-xl font-semibold">Inscription</h2>
-				<div className="flex flex-col my-5">
-					<label htmlFor="username">Pseudo</label>
-					<input
-						type="text"
-						className="border rounded-md shadow py-1 px-2"
-						id="username"
-						// enregistrement de l'input
-						{...register("username")}
-					/>
-					{/* Affichage de l'erreur si la validation ne passe pas */}
-					{errors.username && (
-						<p className="text-red-500 font-bold">{errors.username.message}</p>
-					)}
-				</div>
+				<h2 className="text-center text-xl font-semibold">Connexion</h2>
 				<div className="flex flex-col my-5">
 					<label htmlFor="email">Email</label>
 					<input
@@ -113,7 +83,7 @@ export default function RegisterForm() {
 						// on vient empêcher la double soumission
 						disabled={isSubmitting}
 					>
-						Inscription
+						Connexion
 					</button>
 				</div>
 			</form>

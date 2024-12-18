@@ -1,5 +1,5 @@
 const UserModel = require("../../database/models/user.model");
-
+const bcrypt = require("bcrypt");
 const router = require("express").Router();
 
 //on vient configurer la requête POST
@@ -31,10 +31,19 @@ const router = require("express").Router();
 router.post("/", async (req, res) => {
 	try {
 		// Récupération du body de la requête
-		const body = req.body;
+		//on viens déconstruire pour hasher le mot de passe
+		const { username, email, password } = req.body;
 
 		// Création d'un nouvel utilisateur avec le modèle
-		const newUser = new UserModel(body);
+		const newUser = new UserModel({
+			username,
+			email,
+			//on viens utiliser la fonction pour hasher le mot de passe
+			//le premier paramètre est l'élément que l'on modifie
+			// le second correspond au round
+			//la fonction retourne une promesse
+			password: await bcrypt.hash(password, 8),
+		});
 
 		// Sauvegarde de l'utilisateur en base de données
 		const savedUser = await newUser.save();

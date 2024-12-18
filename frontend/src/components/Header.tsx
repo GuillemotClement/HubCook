@@ -17,7 +17,7 @@ export default function Header() {
 			</ul>
 			<ul className="flex gap-x-3">
 				<li>
-					<NavLink to="/">Connexion</NavLink>
+					<NavLink to="login">Connexion</NavLink>
 				</li>
 				<li>
 					<NavLink to="register">Inscription</NavLink>

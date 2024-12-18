@@ -6,6 +6,7 @@ import RootLayout from "./layout/RootLayout.tsx";
 import Homepage from "./pages/Homepage.tsx";
 import Recipes from "./pages/recipes/Recipes.tsx";
 import RegisterForm from "./pages/authentication/RegisterForm.tsx";
+import LoginForm from "./pages/authentication/LoginForm.tsx";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
 	<StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root") as HTMLElement).render(
 					<Route index element={<Homepage />} />
 					<Route path="recipes" element={<Recipes />} />
 					<Route path="register" element={<RegisterForm />} />
+					<Route path="login" element={<LoginForm />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>
