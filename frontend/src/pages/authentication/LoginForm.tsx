@@ -32,10 +32,10 @@ export default function LoginForm() {
 	});
 
 	//on utilise une fonction asynchrone
-	const submit = handleSubmit(async (user) => {
+	const submit = handleSubmit(async (credentials) => {
 		try {
 			clearErrors();
-			const user = await signin(user);
+			const user = await signin(credentials);
 			console.log(user);
 		} catch (message) {
 			//on viens préciser le type d'erreur que l'on récupère
