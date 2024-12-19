@@ -17,19 +17,19 @@ export default function Header() {
             <NavLink to="/recipes">Recettes</NavLink>
           </li>
           <li>
-            <NavLink to="/">Menu</NavLink>
+            <NavLink to="/menu">Menu</NavLink>
           </li>
         </ul>
       </nav>
       <ul className="flex gap-x-2">
         <li>
-          <NavLink to="/">Connexion</NavLink>
+          <NavLink to="/login">Connexion</NavLink>
         </li>
         <li>
-          <NavLink to="/">Inscription</NavLink>
+          <NavLink to="/register">Inscription</NavLink>
         </li>
         <li>
-          <NavLink to="/">Profil</NavLink>
+          <NavLink to="/profil">Profil</NavLink>
         </li>
         <li>
           <NavLink to="/">Deconnexion</NavLink>

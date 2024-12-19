@@ -6,6 +6,10 @@ import RootLayout from "./components/templates/RootLayout";
 import ErrorPage from "./components/pages/ErrorPage";
 import HomePage from "./components/pages/HomePage";
 import RecipeListPage from "./components/pages/recipes/RecipeListPage";
+import LoginPage from "./components/pages/auth/LoginPage";
+import RegisterPage from "./components/pages/auth/RegisterPage";
+import MenuPage from "./components/pages/menu/MenuPage";
+import ProfilPage from "./components/pages/profil/ProfilPage";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +24,22 @@ const router = createBrowserRouter([
       {
         path: "/recipes",
         element: <RecipeListPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
+      },
+      {
+        path: "/menu",
+        element: <MenuPage />,
+      },
+      {
+        path: "/profil",
+        element: <ProfilPage />,
       },
     ],
   },
